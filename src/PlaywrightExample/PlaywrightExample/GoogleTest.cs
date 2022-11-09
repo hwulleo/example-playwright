@@ -15,7 +15,9 @@ namespace PlaywrightExample
             await using var browser = await playwright.Chromium.LaunchAsync();
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://www.google.com");
-            var searchButtonEnabled = await page.Locator("div:not([jsname]) > center > input[value=\"Google Search\"]").IsEnabledAsync();
+            var searchButtonEnabled = await page
+                .Locator("div:not([jsname]) > center > input[value=\"Google Search\"]")
+                .IsEnabledAsync();
             Assert.IsTrue(searchButtonEnabled);
 
 
